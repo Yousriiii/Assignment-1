@@ -8,6 +8,10 @@ struct student{
     int last_score;
 };
 
+struct Node{
+    struct Node* next;
+    struct student data;
+};
 
 
 #endif // STRUCTURES_H_INCLUDED
