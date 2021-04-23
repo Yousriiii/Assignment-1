@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1619207869 source:c:\users\true_believer\desktop\assignment\assignment-1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+
+1619208233 c:\users\true_believer\desktop\assignment\assignment-1\linkedlist.h
+	"Structures.h"
+
+1619207782 c:\users\true_believer\desktop\assignment\assignment-1\structures.h
+
+1619208243 source:c:\users\true_believer\desktop\assignment\assignment-1\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+

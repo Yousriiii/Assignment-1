@@ -3,9 +3,7 @@
 #include "LinkedList.h"
 struct Node* LinkedList(){
     struct Node* head = (struct Node*)malloc(sizeof(struct Node));
-    struct Node* tail = (struct Node*)malloc(sizeof(struct Node));
-    tail->next = NULL;
-    head->next = tail;
+    head->next = NULL;
     return head;
 }
 
@@ -13,8 +11,7 @@ struct Node* LinkedList(){
 
 int list_size(struct Node * head){
     int s = 0;
-    struct Node* temp = head;
-    while(temp != NULL) {s++;temp = temp->next;};
+    while(head != NULL) {s++;head = head->next;};
     return s;
 }
 
@@ -40,17 +37,20 @@ void insert_tail(struct Node** tail , struct student s){
 
 
 
-void insert(struct Node* head , struct student s , int d){
+void insert_in_the_middle(struct Node* head ,struct Node **tail, struct student s , int d){
     int size = list_size(head);
     if(d > size) {printf("\nout of range\n");return;}
-    struct Node* temp = head;
     struct Node* x = (struct Node*)malloc(sizeof(struct Node));
     x->data = s;
     for(int i = 0 ; i < d-1  ; i++){
-        temp = temp->next;
+        head = head->next;
     }
-    x->next = temp->next;
-    temp->next = x;
+    x->next = head->next;
+    head->next = x;
+    if(x->next == NULL){
+        *tail = x;
+    }
+
 }
 
 
@@ -68,6 +68,18 @@ void print_list(struct Node* head){
     printf("\n");
 }
 
+void insert(struct Node **head ,struct Node **tail, struct student s , int i){
+    const int size = list_size(*head)-1;
+    switch(i){
+        case 0:
+            insert_head(head , s);
+            break;
+        default:
+            insert_in_the_middle(*head,tail, s , i);
+            break;
+
+    }
+}
 
 void freeLinkedList(struct Node* head){
     struct Node* temp = head;
